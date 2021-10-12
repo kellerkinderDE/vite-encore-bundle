@@ -1,0 +1,19 @@
+services:
+  K10r\ViteEncoreBundle\Service\ManifestParser:
+    arguments:
+      $manifestPath: '%kernel.project_dir%/public/%k10r_vite_encore.base%/manifest.json'
+
+  K10r\ViteEncoreBundle\Service\TagRenderer:
+
+  K10r\ViteEncoreBundle\Service\EntrypointRenderer:
+    arguments:
+      $basePath: '%k10r_vite_encore.base%'
+      $serverUrl: '%k10r_vite_encore.server%'
+      $useServer: '%k10r_vite_encore.use_server%'
+      $manifestParser: '@K10r\ViteEncoreBundle\Service\ManifestParser'
+      $tagRenderer: '@K10r\ViteEncoreBundle\Service\TagRenderer'
+
+  K10r\ViteEncoreBundle\Twig\ViteEncoreExtension:
+    arguments:
+      $entrypointRenderer: '@K10r\ViteEncoreBundle\Service\EntrypointRenderer'
+    tags: [twig.extension]
