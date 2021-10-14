@@ -15,6 +15,15 @@ Install the bundle by running:
 composer require k10r/vite-encore
 ```
 
+Now, register the bundle in your `config/bundles.php`:
+
+```php
+return [
+    // ...
+    K10r\ViteEncoreBundle\K10rViteEncoreBundle::class => ['all' => true],
+];
+```
+
 If you have not installed Vite, yet, do so by running:
 
 ```
