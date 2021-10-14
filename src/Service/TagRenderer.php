@@ -21,4 +21,12 @@ class TagRenderer
             $fileName
         );
     }
+
+    public function renderPreload(string $fileName): string
+    {
+        return sprintf(
+            '<link rel="modulepreload" href="%s"/>',
+            $fileName
+        );
+    }
 }

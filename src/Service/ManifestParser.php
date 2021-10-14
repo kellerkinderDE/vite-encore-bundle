@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace K10r\ViteEncoreBundle\Service;
 
+use JsonException;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 class ManifestParser
@@ -15,6 +16,13 @@ class ManifestParser
         $this->manifestPath = $manifestPath;
     }
 
+    /**
+     * Fetches and returns all script files for the respective entrypoint.
+     *
+     * @param string $entryName
+     * @return array<string>
+     * @throws JsonException
+     */
     public function getScriptFiles(string $entryName): array
     {
         $manifest = $this->parseManifest();
@@ -28,6 +36,13 @@ class ManifestParser
         ];
     }
 
+    /**
+     * Fetches and returns all style files for the respective entrypoint.
+     *
+     * @param string $entryName
+     * @return array<string>
+     * @throws JsonException
+     */
     public function getStyleFiles(string $entryName): array
     {
         $manifest = $this->parseManifest();
@@ -43,6 +58,35 @@ class ManifestParser
         return $manifest[$entryName]['css'];
     }
 
+    /**
+     * Fetches and returns all import files for the respective entrypoint,
+     * to make them usable in preloading tags.
+     *
+     * @param string $entryName
+     * @return array<string>
+     * @throws JsonException
+     */
+    public function getScriptImports(string $entryName): array
+    {
+        $manifest = $this->parseManifest();
+
+        if (
+            $manifest === null
+            || !array_key_exists($entryName, $manifest)
+            || !array_key_exists('imports', $manifest[$entryName])
+        ) {
+            return [];
+        }
+
+        return $manifest[$entryName]['imports'];
+    }
+
+    /**
+     * Parses and returns the manifest.json file, if it exists.
+     *
+     * @return array<mixed>|null
+     * @throws JsonException
+     */
     protected function parseManifest(): ?array
     {
         if (!file_exists($this->manifestPath)) {
@@ -50,7 +94,15 @@ class ManifestParser
         }
 
         $contents = file_get_contents($this->manifestPath);
+        if (!$contents) {
+            return null;
+        }
 
-        return json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+        return json_decode(
+            $contents,
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
     }
 }

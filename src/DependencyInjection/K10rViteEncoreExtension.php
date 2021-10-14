@@ -13,6 +13,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class K10rViteEncoreExtension extends Extension
 {
     /**
+     * @param array<mixed> $configs
+     * @param ContainerBuilder $container
      * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
@@ -24,8 +26,13 @@ class K10rViteEncoreExtension extends Extension
 
         $loader->load('services.yml');
 
+        $extensionConfig = $this->getConfiguration($configs, $container);
+        if ($extensionConfig === null) {
+            return;
+        }
+
         $config = $this->processConfiguration(
-            $this->getConfiguration($configs, $container),
+            $extensionConfig,
             $configs
         );
 
@@ -34,11 +41,10 @@ class K10rViteEncoreExtension extends Extension
             $config['server']['host'],
             ':',
             $config['server']['port'],
-            '/',
         ];
 
         $container->setParameter('k10r_vite_encore.base', $config['base']);
-        $container->setParameter('k10r_vite_encore.use_server', $config['server']['enabled']);
+        $container->setParameter('k10r_vite_encore.is_dev_server_enabled', $config['server']['enabled']);
         $container->setParameter(
             'k10r_vite_encore.server',
             implode($serverUrlParts)

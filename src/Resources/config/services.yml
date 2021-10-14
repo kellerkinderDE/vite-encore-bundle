@@ -9,7 +9,8 @@ services:
     arguments:
       $basePath: '%k10r_vite_encore.base%'
       $serverUrl: '%k10r_vite_encore.server%'
-      $useServer: '%k10r_vite_encore.use_server%'
+      $isDevServerEnabled: '%k10r_vite_encore.is_dev_server_enabled%'
+      $environment: '%kernel.environment%'
       $manifestParser: '@K10r\ViteEncoreBundle\Service\ManifestParser'
       $tagRenderer: '@K10r\ViteEncoreBundle\Service\TagRenderer'
 

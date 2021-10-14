@@ -31,6 +31,11 @@ class ViteEncoreExtension extends AbstractExtension
             ], [
                 'is_safe' => ['html'],
             ]),
+            new TwigFunction('vite_preloads_entry', [
+                $this, 'getPreloadsEntrypoint',
+            ], [
+                'is_safe' => ['html'],
+            ]),
         ];
     }
 
@@ -42,5 +47,10 @@ class ViteEncoreExtension extends AbstractExtension
     public function getStyleEntrypoint(string $entryName): string
     {
         return $this->entrypointRenderer->renderStyles($entryName);
+    }
+
+    public function getPreloadsEntrypoint(string $entryName): string
+    {
+        return $this->entrypointRenderer->renderPreloads($entryName);
     }
 }

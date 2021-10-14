@@ -1,33 +1,35 @@
 {
-    "name": "k10r/vite-encore",
-    "description": "Webpack encore like entrypoint loader for ViteJS",
-    "type": "symfony-bundle",
-    "license": "MIT",
-    "scripts": {
-        "cs-fixer": "php-cs-fixer fix"
-    },
-    "autoload": {
-        "psr-4": {
-            "K10r\\ViteEncoreBundle\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Rico Herwig",
-            "email": "r.herwig@kellerkinder.de"
-        }
-    ],
-    "require": {
-        "php": "^7.4",
-        "symfony/config": "^4.4 || ^5.0",
-        "symfony/dependency-injection": "^4.4 || ^5.0",
-        "symfony/http-kernel": "^4.4 || ^5.0",
-        "symfony/framework-bundle": "^4.4 || ^5.0",
-        "symfony/twig-bundle": "^4.4 || ^5.0",
-        "ext-json": "*"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-latest",
-        "k10r/codestyle": "^2.0"
+  "name": "k10r/vite-encore",
+  "description": "Webpack encore like entrypoint loader for ViteJS",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "scripts": {
+    "phpcs": "php-cs-fixer fix",
+    "phpstan": "phpstan analyse src"
+  },
+  "autoload": {
+    "psr-4": {
+      "K10r\\ViteEncoreBundle\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Rico Herwig",
+      "email": "r.herwig@kellerkinder.de"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "symfony/config": "^4.4 || ^5.0",
+    "symfony/dependency-injection": "^4.4 || ^5.0",
+    "symfony/http-kernel": "^4.4 || ^5.0",
+    "symfony/framework-bundle": "^4.4 || ^5.0",
+    "symfony/twig-bundle": "^4.4 || ^5.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "k10r/codestyle": "^2.0",
+    "phpstan/phpstan": "^0.12.99"
+  }
 }
