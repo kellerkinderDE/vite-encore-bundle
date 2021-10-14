@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  codestyle:
     runs-on: ubuntu-latest
 
     steps:

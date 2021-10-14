@@ -19,9 +19,9 @@ class ManifestParser
     /**
      * Fetches and returns all script files for the respective entrypoint.
      *
-     * @param string $entryName
-     * @return array<string>
      * @throws JsonException
+     *
+     * @return array<string>
      */
     public function getScriptFiles(string $entryName): array
     {
@@ -39,9 +39,9 @@ class ManifestParser
     /**
      * Fetches and returns all style files for the respective entrypoint.
      *
-     * @param string $entryName
-     * @return array<string>
      * @throws JsonException
+     *
+     * @return array<string>
      */
     public function getStyleFiles(string $entryName): array
     {
@@ -62,9 +62,9 @@ class ManifestParser
      * Fetches and returns all import files for the respective entrypoint,
      * to make them usable in preloading tags.
      *
-     * @param string $entryName
-     * @return array<string>
      * @throws JsonException
+     *
+     * @return array<string>
      */
     public function getScriptImports(string $entryName): array
     {
@@ -84,8 +84,9 @@ class ManifestParser
     /**
      * Parses and returns the manifest.json file, if it exists.
      *
-     * @return array<mixed>|null
      * @throws JsonException
+     *
+     * @return null|array<mixed>
      */
     protected function parseManifest(): ?array
     {
@@ -94,6 +95,7 @@ class ManifestParser
         }
 
         $contents = file_get_contents($this->manifestPath);
+
         if (!$contents) {
             return null;
         }

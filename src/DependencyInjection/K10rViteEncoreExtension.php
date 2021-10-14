@@ -14,7 +14,7 @@ class K10rViteEncoreExtension extends Extension
 {
     /**
      * @param array<mixed> $configs
-     * @param ContainerBuilder $container
+     *
      * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
@@ -27,6 +27,7 @@ class K10rViteEncoreExtension extends Extension
         $loader->load('services.yml');
 
         $extensionConfig = $this->getConfiguration($configs, $container);
+
         if ($extensionConfig === null) {
             return;
         }
