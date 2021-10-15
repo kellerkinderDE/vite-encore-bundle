@@ -72,7 +72,7 @@ To make the above configuration work with your project, you want to create an
 and `build.rollupOptions.input` options inside the config.
 
 ## Symfony
-In order to change the default configuration, a `k10_vite_encore.yaml` can be
+In order to change the default configuration, a `k10r_vite_encore.yaml` can be
 created inside the `<project-root>/config/packages` directory.
 
 The default configuration is as follows:
