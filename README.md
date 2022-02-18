@@ -6,7 +6,7 @@ its dev server.
 ## Requirements
 In order to use this bundle, your project has to fulfill the following requirements:
 
-* Symfony `^4.4 || ^5.0`
+* Symfony `^4.4 || ^5.0 || ^6.0`
 
 ## Installation
 Install the bundle by running:
@@ -92,7 +92,7 @@ k10r_vite_encore:
 
 `base` - string
 
-This option tells Symfony where to find the bundled assets, relative to the 
+This option tells Symfony where to find the bundled assets, relative to the
 `public` directory. The value has to be equal to the `root` option inside the
 Vite config, as well as match the final path fragment of the `build.outDir` option.
 
