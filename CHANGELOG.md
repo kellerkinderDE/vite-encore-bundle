@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2022-11-16
+### Added
+- Compatibility with Symfony 6 (thanks @chrjean)
+- Compatibility with PHP 8.0 and PHP 8.1
+
 ## [0.1.0] - 2021-10-14
 ### Added
 - Initial implementation for rendering Vite entrypoints
